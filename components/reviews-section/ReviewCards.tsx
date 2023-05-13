@@ -73,7 +73,7 @@ const ReviewCards: React.FC = () => {
                 {card.color}
               </h2>
               <div className="flex justify-center my-2">
-                {[...Array(card.rating)].map((i, j) => (
+                {[...Array(card.rating)].map((_, j) => (
                   <Image src={starRating} alt="rating" key={j} />
                 ))}
               </div>
