@@ -53,7 +53,7 @@ const ReviewCards: React.FC = () => {
               zIndex: 2,
               opacity: index === 0 ? 0 : 1,
               scale: index === 0 ? 0 : 1,
-              translateX: index === 0 ? 200 : 0,
+              translateY: index === 0 ? 45 : 0,
               skewY: index === 0 ? 90 : 0,
               transition: { duration: 0.5 },
             }}
@@ -72,7 +72,7 @@ const ReviewCards: React.FC = () => {
               <h2 className="text-md sm:text-lg md:text-xl font-bold my-2">
                 {card.color}
               </h2>
-              <div className="flex justify-center my-2">
+              <div className="flex justify-center my-2 gap-1">
                 {[...Array(card.rating)].map((_, j) => (
                   <Image src={starRating} alt="rating" key={j} />
                 ))}

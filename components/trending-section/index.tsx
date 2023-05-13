@@ -42,7 +42,7 @@ const index: React.FC = () => {
     ],
   };
   return (
-    <section className="my-[5vh] text-center w-[100%] md:w-[85%] lg:w-[75%] mx-auto ">
+    <section className="my-[5vh] text-center w-[85%] lg:w-[75%] mx-auto ">
       <h2 className="text-[#00412B] text-3xl font-bold">Trending Dishes</h2>
       <div className="">
         <Slider {...settings}>
