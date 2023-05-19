@@ -8,7 +8,7 @@ const index: React.FC = () => {
     dots: true,
     infinite: true,
     speed: 2000,
-    autoplaySpeed: 3000,    
+    autoplaySpeed: 3000,
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -29,63 +29,36 @@ const index: React.FC = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-        },
+          infinite: true,
+          dots: true,
+        }
       },
       {
         breakpoint: 610,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-
-        },
+          infinite: true,
+          dots: true,
+        }
       },
     ],
   };
   return (
-    <section className="my-[5vh] text-center w-[85%] lg:w-[75%] mx-auto ">
+    <section className="my-[5vh] text-center  mx-auto w-[80%] ">
       <h2 className="text-[#00412B] text-3xl font-bold">Trending Dishes</h2>
-      <div className="">
+      <div className="text-center">
         <Slider {...settings}>
-          <div className="p-5">
-            <Card
-              name="Hamburger with fast food (street style)"
-              price={300}
-              img={food1}
-              color="#E9F9F3"
-            />
-          </div>
-          <div className="p-5">
-            <Card
-              name="4 with fast food (street style)"
-              price={300}
-              img={food1}
-              color="#E9F9F3"
-            />
-          </div>
-          <div className="p-5">
-            <Card
-              name="3 with fast foosdafasdfd (street style)"
-              price={300}
-              img={food1}
-              color="#E9F9F3"
-            />
-          </div>
-          <div className="p-5">
-            <Card
-              name="2 with fast food (street style)"
-              price={300}
-              img={food1}
-              color="#E9F9F3"
-            />
-          </div>
-          <div className="p-5">
-            <Card
-              name="1 with fast food (street style)"
-              price={300}
-              img={food1}
-              color="#E9F9F3"
-            />
-          </div>
+          {[...Array(7)].map((_, j) => (
+            <div className="p-5 mx-5" key={j}>
+              <Card
+                name="Hamburger with fast food (street style)"
+                price={300}
+                img={food1}
+                isMenu={false}
+              />
+            </div>
+          ))}
         </Slider>
       </div>
     </section>
