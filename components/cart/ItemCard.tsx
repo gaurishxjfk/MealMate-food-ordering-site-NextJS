@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import FoodImg from "../../public/images/food1.svg";
 import { Trash2 } from "react-feather";
-import { useAppStore } from "../../lib/store";
+import { UseAppStore } from "../../lib/store";
 import {
   stagger,
   useAnimate,
@@ -26,7 +26,7 @@ const ItemCard: React.FC<cartItemProps> = ({ item }) => {
   const { id, name, price, qty } = item;
   let [ref, animate] = useAnimate();
 
-  const { increaseQty, decreaseQty, removeItemCart, isCart } = useAppStore(
+  const { increaseQty, decreaseQty, removeItemCart, isCart } = UseAppStore(
     (state) => state
   );
 

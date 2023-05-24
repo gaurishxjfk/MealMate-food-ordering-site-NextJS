@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import greenHeart_icon from "../../public/images/heart_icon_coloured.svg";
 import Image from "next/image";
-import { useAppStore } from "../../lib/store";
+import { UseAppStore } from "../../lib/store";
 
 type Props = {
   id: number;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const index: React.FC<Props> = ({ id, name, price, img, isMenu }) => {
-  const addToCart = useAppStore(state => state.addToCart)
+  const addToCart = UseAppStore(state => state.addToCart)
   return (
     <div
       className={`flex flex-col gap-2 rounded-lg drop-shadow-[2px_2px_2px_rgba(0,0,0,0.25)] mx-2 ${

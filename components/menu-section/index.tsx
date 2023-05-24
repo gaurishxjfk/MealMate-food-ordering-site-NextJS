@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Card from "../card";
 import food1 from "../../public/images/food1.svg";
-import { useAppStore } from "../../lib/store";
+import { UseAppStore } from "../../lib/store";
 
 interface menuProps {
   showFullMenu: boolean;
@@ -19,7 +19,7 @@ const btnArr = ["All", "Breakfast", "Lunch", "Dinner", "Dessert", "Beavrages"];
 const index: React.FC<menuProps> = ({ showFullMenu }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [type, setType] = useState("All");
-  const { sortMenuItems, sortedMenuItems } = useAppStore();
+  const { sortMenuItems, sortedMenuItems } = UseAppStore();
   console.log(sortedMenuItems)
   useEffect(() => {
     // Call the initial sorting when the component mounts

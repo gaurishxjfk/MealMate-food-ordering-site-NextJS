@@ -1,4 +1,3 @@
-import { type } from "os";
 import { create } from "zustand";
 
 interface Product {
@@ -27,7 +26,7 @@ interface appState {
   //toggleCart: (by: number) => void;
 }
 
-export const useAppStore = create<appState>()((set) => ({
+export const UseAppStore = create<appState>()((set) => ({
   isCart: false,
   toggleCart: () => set((state) => ({ isCart: !state.isCart })),
   cartItems: [],
@@ -87,7 +86,7 @@ export const useAppStore = create<appState>()((set) => ({
 //       ? state.sortedMenuItems
 //       : state.sortedMenuItems.filter((item) => item.type.includes(str)),
 // })),
-// export const useAppStore = create<appState>((set) => ({
+// export const UseAppStore = create<appState>((set) => ({
 //   isCart: false,
 //   toggleCart: () => set((state) => ({ isCart: !state.isCart })),
 //   cartItems: [],
