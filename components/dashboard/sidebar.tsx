@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BarChart, Bell, Database, Disc, DollarSign } from "react-feather";
 
-const sidebar: React.FC = () => {
+const Sidebar: React.FC = () => {
   const [option, setOption] = useState("dash");
   return (
     <div className="bg-white m-0 text-[#00412B] flex flex-col gap-5 p-5 rounded-2xl drop-shadow">
@@ -64,4 +64,4 @@ const sidebar: React.FC = () => {
   );
 };
 
-export default sidebar;
+export default Sidebar;

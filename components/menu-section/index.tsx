@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect as appEffect, useState as appState } from "react";
 import Link from "next/link";
 import Card from "../card";
 import food1 from "../../public/images/food1.svg";
-import { UseAppStore } from "../../lib/store";
+import { appStore } from "../../lib/store";
 
 interface menuProps {
   showFullMenu: boolean;
 }
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+// interface Product {
+//   id: number;
+//   name: string;
+//   price: number;
+// }
 
 const btnArr = ["All", "Breakfast", "Lunch", "Dinner", "Dessert", "Beavrages"];
 
 const index: React.FC<menuProps> = ({ showFullMenu }) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [type, setType] = useState("All");
-  const { sortMenuItems, sortedMenuItems } = UseAppStore();
+
+  const [type, setType] = appState("All");
+  const { sortMenuItems, sortedMenuItems } = appStore();
   console.log(sortedMenuItems)
-  useEffect(() => {
+  appEffect(() => {
     // Call the initial sorting when the component mounts
     sortMenuItems(type);
   }, [type]);

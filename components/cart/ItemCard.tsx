@@ -1,15 +1,9 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import FoodImg from "../../public/images/food1.svg";
 import { Trash2 } from "react-feather";
-import { UseAppStore } from "../../lib/store";
-import {
-  stagger,
-  useAnimate,
-  motion,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
+import { appStore } from "../../lib/store";
+import { motion } from "framer-motion";
 
 interface cartItemProps {
   item: Item;
@@ -24,14 +18,14 @@ interface Item {
 
 const ItemCard: React.FC<cartItemProps> = ({ item }) => {
   const { id, name, price, qty } = item;
-  let [ref, animate] = useAnimate();
+  // let [ref] = useAnimate();
 
-  const { increaseQty, decreaseQty, removeItemCart } = UseAppStore(
+  const { increaseQty, decreaseQty, removeItemCart } = appStore(
     (state) => state
   );
 
   const [isHovered, setIsHovered] = useState(false);
-  const isInView = useInView(ref);
+  //const isInView = useInView(ref);
   //   if(isCart){
   //     if (isInView) {
   //       animate(ref.current, {

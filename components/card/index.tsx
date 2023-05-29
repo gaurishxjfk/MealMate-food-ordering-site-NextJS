@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import greenHeart_icon from "../../public/images/heart_icon_coloured.svg";
 import Image from "next/image";
-import { UseAppStore } from "../../lib/store";
+import { appStore } from "../../lib/store";
 
 type Props = {
   id: number;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const index: React.FC<Props> = ({ id, name, price, img, isMenu }) => {
-  const addToCart = UseAppStore(state => state.addToCart)
+  const addToCart = appStore(state => state.addToCart)
   return (
     <div
       className={`flex flex-col gap-2 rounded-lg drop-shadow-[2px_2px_2px_rgba(0,0,0,0.25)] mx-2 ${
@@ -42,7 +42,7 @@ const index: React.FC<Props> = ({ id, name, price, img, isMenu }) => {
         <motion.button
           className="rounded-full border border-[#488A74] text-[#488A74] px-2 py-1 hover:bg-[#488A74] hover:text-white mx-5"
           whileTap={{ scale: 0.7 }}
-          onClick={(e) => addToCart({id, name, price, qty: 1})}
+          onClick={() => addToCart({id, name, price, qty: 1})}
         >
           Add to cart
         </motion.button>

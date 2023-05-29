@@ -3,7 +3,7 @@ import Nav from "../nav";
 import Cart from "../cart";
 import Account from "../account";
 import DialoguePopOver from "./dialoguePopOver";
-import { UseAppStore } from "../../lib/store";
+import { appStore } from "../../lib/store";
 import { AnimatePresence } from "framer-motion";
 
 interface LayoutProps {
@@ -11,7 +11,7 @@ interface LayoutProps {
 }
 
 const index: React.FC<LayoutProps> = ({ children }) => {
-  const { dialogueType } = UseAppStore((state) => state);
+  const { dialogueType } = appStore((state) => state);
   return (
     <Fragment>
       <Nav />
