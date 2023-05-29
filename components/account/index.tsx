@@ -1,8 +1,8 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession as AuthSession, signIn, signOut } from "next-auth/react";
 import React from "react";
 
 const index: React.FC = () => {
-    const { data: session } = useSession();
+    const { data: session } = AuthSession();
   return (
     <>
       {session ? (

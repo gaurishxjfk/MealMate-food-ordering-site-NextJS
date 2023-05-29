@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-const btnArr = ["All", "Breakfast", "Lunch", "Dinner", "Dessert", "Beavrages"];
+// const btnArr = ["All", "Breakfast", "Lunch", "Dinner", "Dessert", "Beavrages"];
 
 const products = [
   {

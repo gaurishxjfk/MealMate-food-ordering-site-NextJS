@@ -2,11 +2,11 @@ import React from "react";
 import { Frown } from "react-feather";
 import ItemCard from "./ItemCard";
 
-import { UseAppStore } from "../../lib/store";
+import { appStore } from "../../lib/store";
 import { AnimatePresence, motion } from "framer-motion";
 
 const index: React.FC = () => {
-  let cartItems = UseAppStore((state) => state.cartItems);
+  let cartItems = appStore((state) => state.cartItems);
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.price * item.qty,

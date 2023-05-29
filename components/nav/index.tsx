@@ -1,17 +1,17 @@
 import Image from "next/image";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession as AuthSession, signIn } from "next-auth/react";
 import React from "react";
 import { ShoppingCart, Heart, User } from "react-feather";
 import Logo from "../../public/images/logo.svg";
 import Link from "next/link";
-import { UseAppStore } from "../../lib/store";
-import { useRouter } from "next/router";
+import { appStore } from "../../lib/store";
+import { useRouter as router } from "next/router";
 
 const index: React.FC = () => {
-  const { pathname } = useRouter();
+  const { pathname } = router();
   console.log(pathname);
-  const { changeDialogueType, dialogueType } = UseAppStore((state) => state);
-  const { data: session } = useSession();
+  const { changeDialogueType, dialogueType } = appStore((state) => state);
+  const { data: session } = AuthSession();
   // console.log(session.user)
   return (
     <nav className="sticky top-0 flex justify-between w-full h-[3.5em] bg-white z-40 drop-shadow-[0px_2px_15px_rgba(0,0,0,0.25)]">

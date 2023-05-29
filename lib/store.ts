@@ -26,7 +26,7 @@ interface appState {
   //toggleCart: (by: number) => void;
 }
 
-export const UseAppStore = create<appState>()((set) => ({
+export const appStore = create<appState>()((set) => ({
   dialogueType: "",
   changeDialogueType: (str: string) =>
     set((state) => ({ dialogueType: state.dialogueType === str ? "" : str })),
