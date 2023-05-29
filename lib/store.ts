@@ -14,8 +14,8 @@ interface Item {
 }
 
 interface appState {
-  isCart: boolean;
-  toggleCart: () => void;
+  dialogueType: string;
+  changeDialogueType: (type: string) => void;
   cartItems: Product[];
   addToCart: (item: Product) => void;
   increaseQty: (id: number) => void;
@@ -27,8 +27,9 @@ interface appState {
 }
 
 export const UseAppStore = create<appState>()((set) => ({
-  isCart: false,
-  toggleCart: () => set((state) => ({ isCart: !state.isCart })),
+  dialogueType: "",
+  changeDialogueType: (str: string) =>
+    set((state) => ({ dialogueType: state.dialogueType === str ? "" : str })),
   cartItems: [],
   addToCart: (item: Product) =>
     set((state) => {
@@ -68,28 +69,11 @@ export const UseAppStore = create<appState>()((set) => ({
           str.toLowerCase() === "all"
             ? data
             : data.filter((item: Item) => {
-              console.log(item.type, "string => ",str, "fanlboss",item.type.includes(str))
-              return item.type.includes(str)
-            }),
+                return item.type.includes(str);
+              }),
       }));
     } catch (error) {
       console.error("Error fetching menu items:", error);
     }
   },
 }));
-
-// sortMenuItems: (str: string) =>
-// set((state) => ({
-//   ...state,
-//   sortedMenuItems:
-//     str.toLowerCase() === "all"
-//       ? state.sortedMenuItems
-//       : state.sortedMenuItems.filter((item) => item.type.includes(str)),
-// })),
-// export const UseAppStore = create<appState>((set) => ({
-//   isCart: false,
-//   toggleCart: () => set((state) => ({ isCart: !state.isCart })),
-//   cartItems: [],
-//   addToCart: (item: Product) =>
-//     set((state) => ({ cartItems: [...state.cartItems, item] })),
-// }));

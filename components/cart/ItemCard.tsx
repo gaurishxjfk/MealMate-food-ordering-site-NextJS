@@ -26,7 +26,7 @@ const ItemCard: React.FC<cartItemProps> = ({ item }) => {
   const { id, name, price, qty } = item;
   let [ref, animate] = useAnimate();
 
-  const { increaseQty, decreaseQty, removeItemCart, isCart } = UseAppStore(
+  const { increaseQty, decreaseQty, removeItemCart } = UseAppStore(
     (state) => state
   );
 

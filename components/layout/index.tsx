@@ -1,6 +1,8 @@
 import React, { Fragment, ReactNode } from "react";
 import Nav from "../nav";
 import Cart from "../cart";
+import Account from "../account";
+import DialoguePopOver from "./dialoguePopOver";
 import { UseAppStore } from "../../lib/store";
 import { AnimatePresence } from "framer-motion";
 
@@ -9,11 +11,21 @@ interface LayoutProps {
 }
 
 const index: React.FC<LayoutProps> = ({ children }) => {
-  const isCart = UseAppStore((state) => state.isCart);
+  const { dialogueType } = UseAppStore((state) => state);
   return (
     <Fragment>
       <Nav />
-      <AnimatePresence>{isCart ? <Cart /> : ""}</AnimatePresence>
+      <AnimatePresence>
+        <DialoguePopOver>
+          {dialogueType === "cart" ? (
+            <Cart />
+          ) : dialogueType === "acc" ? (
+            <Account />
+          ) : (
+            ""
+          )}
+        </DialoguePopOver>
+      </AnimatePresence>
 
       <main>{children}</main>
     </Fragment>

@@ -56,6 +56,7 @@ const index: React.FC = () => {
                 price={300}
                 img={food1}
                 isMenu={false}
+                id={j}
               />
             </div>
           ))}
