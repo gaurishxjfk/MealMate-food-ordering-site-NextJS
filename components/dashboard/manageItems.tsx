@@ -3,11 +3,17 @@ import { appStore } from "../../lib/store";
 import { Search } from "react-feather";
 import { DashboardState } from "../../lib/dashboardStore";
 // const options = ["All", "Breakfast", "Lunch", "Dinner", "Dessert", "Beavrages"];
-const ManageItems = () => {
+
+interface manageItemsProps {
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+  searchQuery: string
+}
+
+const ManageItems: React.FC<manageItemsProps> = ({searchQuery,setSearchQuery}) => {
   const { changeDialogueType } = appStore((state) => state);
   const { fetchDishes } = DashboardState((state) => state);
 
-  const [searchQuery, setSearchQuery] = appState("");
+  
   const [debouncedSearchQuery, setDebouncedSearchQuery] = appState("");
 
   appEffect(() => {
@@ -19,7 +25,7 @@ const ManageItems = () => {
 
   appEffect(() => {
     
-      fetchDishes(debouncedSearchQuery);
+      fetchDishes(debouncedSearchQuery,null);
   }, [debouncedSearchQuery]);
 
   return (
@@ -38,7 +44,7 @@ const ManageItems = () => {
           />
           <button
             className="absolute right-0"
-            onClick={() => fetchDishes(searchQuery)}
+            onClick={() => fetchDishes(searchQuery,null)}
           >
             <Search color="gray" />
           </button>

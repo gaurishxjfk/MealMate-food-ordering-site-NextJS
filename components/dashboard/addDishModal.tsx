@@ -1,4 +1,4 @@
-import React, { useEffect as appEffect, useState as appState} from "react";
+import React, { useEffect as appEffect, useState as appState } from "react";
 import { appStore } from "../../lib/store";
 import InputEl from "../other/inputEl";
 import InputTags from "../other/InputTags";
@@ -70,7 +70,7 @@ const AddDishModal: React.FC<{ itemData: dish }> = ({ itemData }) => {
       ? await createDish(getDishData())
       : await updateDish(getDishData());
     resetForm();
-    await fetchDishes("");
+    await fetchDishes("", null);
     changeDialogueType("");
   };
 

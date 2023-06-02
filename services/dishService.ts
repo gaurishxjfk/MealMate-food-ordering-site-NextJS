@@ -1,21 +1,16 @@
 import { dish } from "../types/types";
 import axios from "axios";
 
-export const getDishesData = async (name: string) => {
+export const getDishesData = async (name: string, currentPage: number) => {
   try {
     const url = name
       ? `http://localhost:3000/api/manageitems/getdish?name=${encodeURIComponent(
           name
-        )}`
-      : "http://localhost:3000/api/manageitems/getdish";
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (response.ok) {
-      const dishData = await response.json();
+        )}&page=${currentPage}`
+      : `http://localhost:3000/api/manageitems/getdish?page=${currentPage}`;
+    const response = await axios.get(url);
+    if (response.status === 200) {
+      const dishData = response.data;
       return dishData;
     } else {
       console.error("Error:", response.status);
@@ -29,16 +24,10 @@ export const getDishesData = async (name: string) => {
 
 export const createDish = async (dishData: dish) => {
   try {
-    const response = await fetch("/api/manageitems/createdish", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dishData),
-    });
+    const response = await axios.post("/api/manageitems/createdish", dishData);
 
-    if (response.ok) {
-      const createdDish = await response.json();
+    if (response.status === 201) {
+      const createdDish = response.data;
       console.log(createdDish);
       return createdDish;
     } else {
@@ -51,16 +40,10 @@ export const createDish = async (dishData: dish) => {
 
 export const updateDish = async (dishData: dish) => {
   try {
-    const response = await fetch("/api/manageitems/createdish", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dishData),
-    });
+    const response = await axios.patch("/api/manageitems/createdish",dishData);
 
-    if (response.ok) {
-      const updatedDish = await response.json();
+    if (response.status === 201) {
+      const updatedDish = response.data;
       console.log(updatedDish);
       return updatedDish;
     } else {
@@ -73,8 +56,9 @@ export const updateDish = async (dishData: dish) => {
 
 export const deleteDish = async (dishId: number) => {
   try {
-    const response = await axios.delete("/api/manageitems/deletedish/"+dishId);
-    console.log(response,"yahi hu mai")
+    const response = await axios.delete(
+      "/api/manageitems/deletedish/" + dishId
+    );
     return response.data;
   } catch (error) {
     console.error(error);
