@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect as appEffect, useState as appState} from "react";
 import { motion } from "framer-motion";
 import starRating from "../../public/images/starRating.svg";
 import Image from "next/image";
+import { reviewCard } from "../../types/types";
 
-interface Card {
-  color: string;
-  rating: number;
-}
+
 
 const ReviewCards: React.FC = () => {
-  const [cards, setCards] = useState<Card[]>([
+  const [cards, setCards] = appState <reviewCard[]>([
     { color: "“The food was lovely and will order it again”", rating: 5 },
     {
       color:
@@ -38,7 +36,7 @@ const ReviewCards: React.FC = () => {
     });
   };
 
-  useEffect(() => {
+  appEffect(() => {
     const intervalID = setInterval(() => handleMoveTopToBottom(), 3000);
     return () => clearInterval(intervalID);
   }, []);

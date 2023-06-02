@@ -4,17 +4,7 @@ import FoodImg from "../../public/images/food1.svg";
 import { Trash2 } from "react-feather";
 import { appStore } from "../../lib/store";
 import { motion } from "framer-motion";
-
-interface cartItemProps {
-  item: Item;
-}
-
-interface Item {
-  name: string;
-  qty: number;
-  price: number;
-  id: number;
-}
+import { cartItemProps } from "../../types/types";
 
 const ItemCard: React.FC<cartItemProps> = ({ item }) => {
   const { id, name, price, qty } = item;
@@ -25,19 +15,6 @@ const ItemCard: React.FC<cartItemProps> = ({ item }) => {
   );
 
   const [isHovered, setIsHovered] = useState(false);
-  //const isInView = useInView(ref);
-  //   if(isCart){
-  //     if (isInView) {
-  //       animate(ref.current, {
-  //         scale: [1, 1.1, 1]
-  //       },
-
-  //       {
-  //         duration: 1,
-  //         delay: stagger(1, { ease: "easeOut" }),
-  //       })
-  //     }
-  //  }
 
   const handleMouseEnter = () => {
     setIsHovered(true);

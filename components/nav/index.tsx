@@ -9,17 +9,17 @@ import { useRouter as router } from "next/router";
 
 const index: React.FC = () => {
   const { pathname } = router();
-  console.log(pathname);
+
   const { changeDialogueType, dialogueType } = appStore((state) => state);
   const { data: session } = AuthSession();
-  // console.log(session.user)
+
   return (
     <nav className="sticky top-0 flex justify-between w-full h-[3.5em] bg-white z-40 drop-shadow-[0px_2px_15px_rgba(0,0,0,0.25)]">
       <Link href="/" className="mx-5 my-3">
         <Image src={Logo} width={150} height={50} alt="MealMate Logo" />
       </Link>
       <div className="flex gap-5 mx-5 items-center">
-        {pathname !== "/dashboard" && (
+        {!pathname.includes("/dashboard") && (
           <>
             <button
               onClick={() => changeDialogueType("bookmark")}

@@ -8,12 +8,6 @@ interface menuProps {
   showFullMenu: boolean;
 }
 
-// interface Product {
-//   id: number;
-//   name: string;
-//   price: number;
-// }
-
 const btnArr = ["All", "Breakfast", "Lunch", "Dinner", "Dessert", "Beavrages"];
 
 const index: React.FC<menuProps> = ({ showFullMenu }) => {

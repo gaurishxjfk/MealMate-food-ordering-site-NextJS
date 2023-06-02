@@ -1,65 +1,81 @@
-import React, { useState } from "react";
-import { BarChart, Bell, Database, Disc, DollarSign } from "react-feather";
+import Link from "next/link";
+import React, { useEffect as appEffect } from "react";
+import { BarChart, Bell, Grid, Disc, List } from "react-feather";
+import { DashboardState } from "../../lib/dashboardStore";
+import { useRouter as router } from "next/router";
 
 const Sidebar: React.FC = () => {
-  const [option, setOption] = useState("dash");
+  const { option, changeOption } = DashboardState((state) => state);
+  const { pathname } = router();
+
+  appEffect(() => {
+    if (pathname.includes("manage_items")) {
+      changeOption("items");
+    }
+  }, []);
+
   return (
     <div className="bg-white m-0 text-[#00412B] flex flex-col gap-5 p-5 rounded-2xl drop-shadow">
-      <div
+      <Link
+        href={"/dashboard"}
         className={`flex gap-4 ${
-            option === "dash" && "font-bold bg-[#00412B] text-white"
+          option === "dash" && "font-bold bg-[#00412B] text-white"
         } hover:bg-[#00412B] hover:text-white hover:font-bold transition-all rounded-full p-2 cursor-pointer`}
-        onClick={() => setOption("dash")}
+        onClick={() => changeOption("dash")}
       >
         <span>
-          <Database />
+          <Grid />
         </span>
         <label htmlFor="dashboard">Dashboard</label>
-      </div>
-      <div
+      </Link>
+      <Link
         className={`flex gap-4 ${
-            option === "items" && "font-bold bg-[#00412B] text-white"
+          option === "items" && "font-bold bg-[#00412B] text-white"
         } hover:bg-[#00412B] hover:text-white hover:font-bold transition-all rounded-full p-2 cursor-pointer`}
-        onClick={() => setOption("items")}
+        onClick={() => changeOption("items")}
+        href={"/dashboard/manage_items"}
       >
         <span>
-          <DollarSign />
+          <List />
         </span>
         <label htmlFor="Manage Items">Manage Items</label>
-      </div>
-      <div
+      </Link>
+      <Link
+        href={"/dashboard"}
         className={`flex gap-4 ${
-            option === "misc" && "font-bold bg-[#00412B] text-white"
+          option === "misc" && "font-bold bg-[#00412B] text-white"
         } hover:bg-[#00412B] hover:text-white hover:font-bold transition-all rounded-full p-2 cursor-pointer`}
-        onClick={() => setOption("misc")}
+        onClick={() => changeOption("misc")}
       >
         <span>
           <Disc />
         </span>
         <label htmlFor="Misc">Misc</label>
-      </div>
-      <div
+      </Link>
+      <Link
+        href={"/dashboard"}
         className={`flex gap-4 ${
-            option === "notf" && "font-bold bg-[#00412B] text-white"
+          option === "notf" && "font-bold bg-[#00412B] text-white"
         } hover:bg-[#00412B] hover:text-white hover:font-bold transition-all rounded-full p-2 cursor-pointer`}
-        onClick={() => setOption("notf")}
+        onClick={() => changeOption("notf")}
       >
         <span>
           <Bell />
         </span>
         <label htmlFor="Notification">Notification</label>
-      </div>
-      <div
+      </Link>
+      <Link
+        href={"/dashboard"}
         className={`flex gap-4 ${
           option === "chat" && "font-bold bg-[#00412B] text-white"
         } hover:bg-[#00412B] hover:text-white hover:font-bold transition-all rounded-full p-2 cursor-pointer`}
-        onClick={() => setOption("chat")}
+        onClick={() => changeOption("chat")}
       >
         <span>
           <BarChart />
         </span>
         <label htmlFor="Chat">Chat</label>
-      </div>
+      </Link>
     </div>
   );
 };

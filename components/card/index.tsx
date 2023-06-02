@@ -3,16 +3,10 @@ import { motion } from "framer-motion";
 import greenHeart_icon from "../../public/images/heart_icon_coloured.svg";
 import Image from "next/image";
 import { appStore } from "../../lib/store";
+import { cardProps } from "../../types/types";
 
-type Props = {
-  id: number;
-  name: string;
-  price: number;
-  img: string;
-  isMenu: boolean;
-};
 
-const index: React.FC<Props> = ({ id, name, price, img, isMenu }) => {
+const index: React.FC<cardProps> = ({ id, name, price, img, isMenu }) => {
   const addToCart = appStore(state => state.addToCart)
   return (
     <div
